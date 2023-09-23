@@ -29,6 +29,8 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Docker start
-      run: docker-compose up
+      run: docker-compose up &
+    - name: wait for start container
+      run: sleep 30
     - name: SUT start
-      run: java -jar artifacts/app-deadline.jar
+      run: java -jar artifacts/app-deadline.jar &
