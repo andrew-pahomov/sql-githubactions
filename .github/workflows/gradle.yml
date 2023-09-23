@@ -9,9 +9,6 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 permissions:
   contents: read
@@ -34,3 +31,7 @@ jobs:
       run: sleep 30
     - name: SUT start
       run: java -jar artifacts/app-deadline.jar &
+    - name: Permissions set
+      run: chmod +x gradlew
+    - name: Start tests
+      run: ./gradlew test --info -Dselenide.headless=true
