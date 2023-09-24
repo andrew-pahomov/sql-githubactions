@@ -25,13 +25,13 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+    - name: Permissions set
+      run: chmod +x gradlew; chmod +x waitfordb.sh;      
     - name: Docker start
       run: docker-compose up &
     - name: Waiting for DB
-      run: while ! nc -z localhost 3306; do sleep 1; done
+      run: ./waitfordb.sh
     - name: SUT start
       run: java -jar artifacts/app-deadline.jar &
-    - name: Permissions set
-      run: chmod +x gradlew
     - name: Start tests
       run: ./gradlew test --info -Dselenide.headless=true
