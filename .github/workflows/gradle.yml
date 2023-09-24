@@ -26,7 +26,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Docker start
-      run: docker-compose up
+      run: docker-compose up &
     - name: Waiting for DB
       run: while ! nc -z localhost 3306; do sleep 1; done
     - name: SUT start
