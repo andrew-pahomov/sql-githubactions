@@ -30,7 +30,7 @@ jobs:
     - name: Docker start
       run: docker-compose up &
     - name: Waiting for DB
-      run: ./waitfordb.sh
+      run: sleep 30
     - name: SUT start
       run: java -jar artifacts/app-deadline.jar &
     - name: Start tests
