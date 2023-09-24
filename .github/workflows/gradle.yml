@@ -26,7 +26,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Docker start
-      run: (docker-compose up) | grep -q "X Plugin ready for connections"
+      run: (docker-compose up &) | grep -q "X Plugin ready for connections"
     - name: SUT start
       run: java -jar artifacts/app-deadline.jar &
     - name: Permissions set
