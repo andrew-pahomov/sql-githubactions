@@ -25,12 +25,10 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+    - name: Container start
+      uses: hoverkraft-tech/compose-action@v2.0.1
     - name: Permissions set
-      run: chmod +x gradlew; chmod +x waitfordb.sh;      
-    - name: Docker start
-      run: docker-compose up &
-    - name: Waiting for DB
-      run: sleep 30
+      run: chmod +x gradlew   
     - name: SUT start
       run: java -jar artifacts/app-deadline.jar &
     - name: Start tests
