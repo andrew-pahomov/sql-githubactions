@@ -27,6 +27,8 @@ jobs:
         distribution: 'temurin'
     - name: Container start
       uses: hoverkraft-tech/compose-action@v2.0.1
+    - name: Waiting for сontainer start
+      run: sleep 30
     - name: Permissions set
       run: chmod +x gradlew   
     - name: SUT start
